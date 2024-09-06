@@ -1,7 +1,7 @@
-#  python pyojeol_self.py \
-#  --load_path "./data/killer.xlsx" \
-#  --save_path "./outputs" \
-#  --columns "자기소개서1,자기소개서4" \
+#  python pyojeol_self_test.py \
+#  --load_path "./data/공백두개_김소소.xlsx" \
+#  --save_path "./outputs/0508self" \
+#  --columns "full" \
 #  --slide_length 6
 
 #  python3 pyojeol_full_test.py \
@@ -12,7 +12,7 @@
 #  --user_ind_colname "NO" \
 #  --min_counts 2 \
 #  --min_word_len 2 \
-#  --percentile 90\
+#  --percentile 50\
 #  --num_processes 20 \
 #  --slide_length 5
 
@@ -39,11 +39,11 @@
 
 #  #OK
 #  python3 no_matter.py \
-#  --load_path "./data/테스트데이터.xlsx" \
-#  --save_path "./outputs" \
+#  --load_path "./data/원격로컬비교용_철도10명.xlsx" \
+#  --save_path "./outputs/0612_nomatter" \
 #  --weight_path "./models" \
 #  --test_model_name "nomatter" \
-#  --columns "자기소개서1,자기소개서4"
+#  --columns "full"
 
 #  #OK
 #  python repeat_content.py \
@@ -64,13 +64,13 @@
 #  --load_path "./data/철도표절원본.xlsx" \
 #  --save_path "./outputs/find_keyword" \
 #  --columns "full" \
-#  --keywords "대 중교통서 비스, 사회적가치를 실현하기 위해" 
+#  --keywords "대학, 대 중교 통 서비 스, 철도 공사" 
 
-# new
- python blind_name.py \
- --load_path "./data/철도표절원본.xlsx" \
- --save_path "./outputs/name" \
- --columns "full" \
+# # new
+#  python blind_name.py \
+#  --load_path "./data/철도표절원본.xlsx" \
+#  --save_path "./outputs/name" \
+#  --columns "full" \
 
 #  #OK
 #  python3 bisok.py \
@@ -80,12 +80,17 @@
 #  --screen_path "./add_DB/mali_screen.xlsx" \
 #  --columns "자기소개서1,자기소개서4"
 
-#  #OK
+ #OK
 #  python jasamyeong.py \
 #  --load_path "./data/자기소개서_1111_20230630030038.xls" \
 #  --save_path "./outputs" \
 #  --columns "자기소개서1,자기소개서4" \
 #  --company_name "한국토지주택공사"
+ python jasamyeong.py \
+ --load_path "./data/jasamyeong_data/자사명타사명0905.xlsx" \
+ --save_path "./outputs" \
+ --columns "full" \
+ --company_name "한전KPS"
 
 #  #OK
 #  python3 apply_other_com.py \

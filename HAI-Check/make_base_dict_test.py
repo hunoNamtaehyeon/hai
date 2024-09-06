@@ -68,6 +68,11 @@ class MakeBaseDictionary:
             origin_colname = loaded_df.columns
             loaded_df.columns = ['수험번호', '지원분야', '지원자명'] + [ "자기소개서"+ str(i+1) for i in range(len(loaded_df.columns)-3)]
             origin_user_ind = loaded_df['수험번호']
+            
+            for cols in loaded_df.columns:
+                loaded_df.loc[:, cols] = loaded_df.loc[:, cols].str.replace("\xa0", " ")
+            
+            
             return loaded_df, len(loaded_df), origin_colname, origin_user_ind
             #####
             
@@ -110,6 +115,9 @@ class MakeBaseDictionary:
                 document = self.df.loc[user, self.colname[col_num]]
                 sents = self.tokenize_sentences(document)
                 for sent_num, sent in enumerate(sents):
+                    #####
+                    # sent = sent.replace(u'\xa0', u' ')
+                    #####
                     capture_dict[user][col_num][sent_num] = sent
         return capture_dict
 

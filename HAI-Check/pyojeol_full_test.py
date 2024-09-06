@@ -40,6 +40,7 @@ def create_vocab_dict(base_dict, min_counts, min_word_len): ##### min_counts번 
     filtered_vocab_dict = {word: data for word, data in sorted_vocab_dict.items() if
                            (len(word) >= min_word_len) & (min_counts <= data['count'])}
     cnt_lst = [v['count'] for k, v in filtered_vocab_dict.items()]
+    pprint(filtered_vocab_dict)
     return filtered_vocab_dict, cnt_lst
 
 
@@ -51,7 +52,7 @@ def compare_sentences(windows1, windows2):
 
 def split_into_slides(sentence, slide_length):
     # Split the sentence into slides of given length
-    words = sentence.split()
+    words = sentence.split(" ")
     slides = []
     for i in range(len(words) - slide_length + 1):
         slide = ' '.join(words[i:i + slide_length])
@@ -163,6 +164,10 @@ def make_result_parallel(vocab_lsts, base_dict, num_processes=20):
     # datas = [data for word, data in vocab_dict.items()] # 여기에서 셀프인지 아닌지를 판단할 수 있으면 좋을 것 같은데...
     # datas = detoxing_self(vocab_dict)
     pool = multiprocessing.Pool(num_processes)
+    print("-"*100)
+    print(vocab_lsts)
+    # with open(f'{os.getcwd()}/outputs/memory/data_count.json', 'w') as f:
+        
     results = list(tqdm(pool.imap(process_data, vocab_lsts), total=len(vocab_lsts)))
 
     pool.close()
@@ -391,6 +396,7 @@ def make_rate_dict(updated_output_dict, base_dict):
             user_tot_pyojeol_sent_cnt += pyo_eojeol_cnt
             pyo_rates = pyo_eojeol_cnt / tot_words_length
             user_tot_sent_cnt += tot_words_length
+            print(tot_words_length)
             rate_dict[u]['docs_rates'][col] = round(pyo_rates, 4)
         rate_dict[u]['total_eojeol_cnt'] = user_tot_sent_cnt
         rate_dict[u]['total_pyojeol_eojeol_cnt'] = user_tot_pyojeol_sent_cnt
@@ -462,6 +468,7 @@ if __name__ == "__main__":
     filtered_vocab_dict, cnt_lst = create_vocab_dict(base_dict, args.min_counts, args.min_word_len)
     threshold = np.percentile(cnt_lst, args.percentile)
     vocab_dict = {word: data for word, data in filtered_vocab_dict.items() if data['count'] <= threshold}
+    # pprint(vocab_dict)
     vocab_lsts = set()
     for word, data in tqdm(vocab_dict.items()):
         ##### for (p1, p2) in combinations(data['index'], 2):

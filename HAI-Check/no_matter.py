@@ -134,6 +134,7 @@ if __name__ == "__main__":
     formatted_datetime = current_datetime.strftime("%Y%m%d%H%M%S")
     os.makedirs(args.save_path, exist_ok=True)
     findf.to_csv(os.path.join(args.save_path, 'nomatter_' + formatted_datetime + '.csv'),
-                 encoding='utf-8',
+                #  encoding='utf-8',
+                 encoding='cp949',
                  errors='ignore',
                  index=None)

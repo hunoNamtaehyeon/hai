@@ -7,3 +7,7 @@
 /outputs
 
 /train_data
+
+/venv
+
+__pycache__/*
