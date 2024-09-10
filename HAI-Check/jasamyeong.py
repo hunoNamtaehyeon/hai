@@ -44,7 +44,7 @@ def find_word_indices(sent1, word1):
 
 
 def main(args, base_dict):
-    with open('./jasa_dict.json', 'w') as f:
+    with open('./jasa_dict_0910_test.json', 'w') as f:
         json.dump(base_dict, f, ensure_ascii=False, indent=4)
     ##### 과업 내용 출력
     print("#"*50)
@@ -94,6 +94,7 @@ def main(args, base_dict):
                     output_dict[user][col] = final_lst
                 else:
                     output_dict[user][col] = 0
+    print(output_dict)
     return output_dict
 
 

@@ -87,7 +87,7 @@
 #  --columns "자기소개서1,자기소개서4" \
 #  --company_name "한국토지주택공사"
  python jasamyeong.py \
- --load_path "./data/jasamyeong_data/자사명타사명0905.xlsx" \
+ --load_path "./data/jasamyeong_data/자사명타사명0910.xlsx" \
  --save_path "./outputs" \
  --columns "full" \
  --company_name "한전KPS"
